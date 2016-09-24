@@ -61,6 +61,9 @@ module.exports = app;
 
 //add data test
 
+
+
+
 describe('Post recipe', function() {
     it('should return success after adding new recipe', function(done) {
         var request = require('supertest');
@@ -81,11 +84,10 @@ describe('Post recipe', function() {
                     "cooking" : "cook",
                     "serve" : "lightly incinerated"
                  },
-              ],
-              "name" : "Chen",
+              ]
               "rating" : 1
            };
-
+    var url = 'mongodb://heroku_pmrvv2vc:kbp43neuv3gnkt8br4skdq3a41@ds037145.mlab.com:37145/heroku_pmrvv2vc';
     request(url)
         .post('/api/recipe')
 
