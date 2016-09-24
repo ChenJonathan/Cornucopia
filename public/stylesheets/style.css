@@ -103,6 +103,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.navbar-brand {
+    font-size: 30px; /* firefox bug fix */
+}
+
+#navmenu {
+    font-size: 18px;
+    border-radius: 0px;
+
+}
+
 .navbar-brand2 {
     padding: 0px; /* firefox bug fix */
 }
@@ -115,4 +125,19 @@ body {
 #name {
     font-weight: bolder;
     /*font-size: 16px;*/
+}
+
+.side-buffer {
+    margin-left:15px;
+    margin-right: 15px;
+}
+
+.img-food {
+    max-height: 500px;
+    max-widgth: 500px;
+
+}
+
+.gap-right {
+    margin-right: 10px;
 }
