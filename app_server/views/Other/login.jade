@@ -5,21 +5,14 @@ block content
         .login-page
             h1(align='center') Cornucopia
             .form
-                form.register-form
-                    input(type='text', placeholder='name')
-                    input(type='password', placeholder='password')
-                    input(type='text', placeholder='email address')
-                    button create
-                    p.message
-                        | Already registered?
-                        a(href='#')  Sign In
                 form.login-form
                     input(type='text', placeholder='username')
                     input(type='password', placeholder='password')
-                    button login
+                    a.btn.btn-default(id = 'login' href='/users/KevinTian/recipes') Login
+                    //button(onclick="window.location.href='/users/KevinTian/recipes'") login
                     p.message
                         | Not registered?
-                        a(href='#')  Create an account
+                        a(href='/register')  Create an account
 
     //h1= title
     //p #{username}
