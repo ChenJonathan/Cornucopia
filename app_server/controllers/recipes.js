@@ -1,6 +1,6 @@
 var request = require('request');
 
-module.exports.recipeInfo = function(req, res) {
+module.exports.recipeInfo = function(req, res, next) {
     request.get('http://chenjonathan-cornucopia.herokuapp.com/api/recipe/' + req.params.recipeId, function(err, response) {
         if (err) {
             next(err);
