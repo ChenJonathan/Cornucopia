@@ -5,6 +5,7 @@ module.exports.recipeInfo = function(req, res) {
   request.get('http://localhost:3000/api/recipe/' + req.params.recipeId, function(err, response) {
     if (err) {
       console.log(err);
+      next(err);
     }
     var recipe = response['body'];
     console.log(recipe);
@@ -30,6 +31,7 @@ module.exports.recipeCreate = function(req, res) {
   request(options, function(err, res, body) {
     if (err) {
       console.log(err);
+      next(err);
     } else {
       console.log(res);
     }
