@@ -42,4 +42,5 @@ process.on('SIGTERM', function() {
     });
 });
 
-require('./recipes');
+require('./recipe');
+require('./user');
