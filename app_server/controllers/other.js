@@ -1,10 +1,10 @@
-// module.exports.home = function(req, res) {
-//     res.render('other\\home', {
-//         title: 'Homepage',
-//         input1: 'Login Button',
-//         input2: 'Password Button',
-//     });
-// };
+module.exports.home = function(req, res) {
+    res.render('other\\home', {
+        title: 'Homepage',
+        input1: 'Login Button',
+        input2: 'Password Button',
+    });
+};
 
 module.exports.login = function(req, res) {
     res.render('other\\login', {
