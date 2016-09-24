@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-// Create schemas here
 var recipeSchema = new mongoose.Schema({
   name: String,
   instructions: [String],
@@ -8,6 +7,4 @@ var recipeSchema = new mongoose.Schema({
   ingredients: [String]
 });
 
-var Recipe = mongoose.model('Recipe', recipeSchema);
-
-module.exports = Recipe;
+module.exports = mongoose.model('Recipe', recipeSchema);
