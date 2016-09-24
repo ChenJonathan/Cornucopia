@@ -1,6 +1,12 @@
 /* GET 'location list' page. */
-module.exports.recipeList = function(req, res) {
+module.exports.recipeInfo = function(req, res) {
     res.render('index', {
-        title: 'Test list',
+        title: 'Test ' + req.params.recipeId,
+    });
+};
+
+module.exports.recipeNew = function(req, res) {
+    res.render('index', {
+        title: 'Test new',
     });
 };
