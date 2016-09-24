@@ -1,7 +1,10 @@
 var request = require('request');
 
 module.exports.feedList = function(req, res) {
-    res.render('feed/feed', {
-        title: "Test"
+    request.get("http://chenjonathan-cornucopia.herokuapp.com/api/recipe", function(err, response) {
+        res.render('feed/feed', {
+            title: "Test",
+            recipes: response.body
+        });
     });
 };

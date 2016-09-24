@@ -7,7 +7,11 @@ module.exports.recipeInfo = function(req, res, next) {
         }
         var recipe = response['body'];
         res.render('recipes/info', {
-            title: recipe
+            name: recipe.name,
+            author: recipe.author,
+            instructions: recipe.instructions,
+            rating: recipe.rating,
+            ingredients: recipe.ingredients
         });
     });
 };
@@ -15,6 +19,6 @@ module.exports.recipeInfo = function(req, res, next) {
 
 module.exports.recipeCreate = function(req, res) {
     res.render('recipes/create', {
-        title: "Test"
+        title: "Create New Recipe"
     });
 };

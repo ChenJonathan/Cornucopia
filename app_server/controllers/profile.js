@@ -5,8 +5,14 @@ module.exports.profileUser = function(req, res, next) {
         if (err) {
             next(err);
         }
+        console.log(response.body);
         res.render('profile/profile', {
-            title: 'Test id'  + req.params.userId
+            user: response.body,
+            password: response.body.password,
+            points: response.body.points,
+            recipesSubmitted: response.body.recipesSubmitted,
+            recipesSaved: response.body.recipesSaved,
+            recipesHighlighted: response.body.recipesHighlighted
         });
     });
 };
@@ -17,7 +23,7 @@ module.exports.profileRecipes = function(req, res, next) {
             next(err);
         }
         res.render('profile/recipes', {
-            title: 'Test id' + req.params.userId
+            submittedRecipes: response
         });
     });
 };
