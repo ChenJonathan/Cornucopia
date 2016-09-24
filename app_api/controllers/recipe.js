@@ -21,7 +21,7 @@ module.exports.postNewRecipe = function(req, res) {
     name: req.body.name,
     author: req.body.author,
     instructions: req.body.instructions,
-    rating: req.body.rating,
+    rating: 0,
     ingredients: req.body.ingredients
   });
   recipe.save(function(err, post) {
