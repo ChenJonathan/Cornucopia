@@ -1,10 +1,7 @@
+var request = require('request');
+
 module.exports.feedList = function(req, res) {
-
-    var feed;
-    request.get()
-
-    res.render('feed\\feed', {
-        title: 'Test list',
-    });
-    recipe:
+  request.get('http://localhost:3000/api/recipe', function(err, response) {
+    res.send(response.body);
+  });
 };

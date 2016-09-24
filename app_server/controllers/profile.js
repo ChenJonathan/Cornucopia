@@ -1,7 +1,7 @@
-var router = require('router');
+var request = require('request');
 
 module.exports.profileUser = function(req, res) {
-  router.get('http://localhost:3000/api/user/' + req.params.userId, function (err, response) {
+  request.get('http://localhost:3000/api/user/' + req.params.userId, function (err, response) {
     if (err) {
       console.log(err);
       next(err);
@@ -14,7 +14,7 @@ module.exports.profileUser = function(req, res) {
 };
 
 module.exports.profileRecipes = function(req, res) {
-  router.get('http://localhost:3000/user/' + req.params.userId + '/submitted', function(err, response) {
+  request.get('http://localhost:3000/user/' + req.params.userId + '/submitted', function(err, response) {
     if (err) {
       console.log(err);
       next(err);
