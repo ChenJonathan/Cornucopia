@@ -20,8 +20,7 @@ router.get('/users/:userId/recipes', controlProfile.profileRecipes);
 router.get('/users/:userId/groceries', controlProfile.profileGroceries);
 
 /* Other pages */
-router.get('/login', controlOther.login);
+router.get('/', controlOther.login);
 router.get('/register', controlOther.register);
-router.get('/', controlOther.home);
 
 module.exports = router;

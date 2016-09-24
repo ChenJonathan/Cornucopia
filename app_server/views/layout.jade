@@ -9,16 +9,19 @@ html( lang="en" )
     meta( name='description', content='Baking Bootstrap Snippets with Jade' )
     //- Bootswatch Theme
     link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
+    link(href="/stylesheets/style.css", rel="stylesheet")
 
 
   body(style="padding-bottom:10rem;")
-    .container
+    .container-fill
+        block content
+
+
+    //- munchies is the name, dropdown_menu is the id of the item, third parameter would be the style.
+    //- slash means home directory
+    //- This sends a get request to index.js, which brings you to other.js
+
 
     script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
     script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
-
-    //munchies is the name, dropdown_menu is the id of the item, third parameter would be the style.
-    +nav("Munchies", "dropdown_menu")
-      +nav_item( "/", "active") Index
-    block content
 
