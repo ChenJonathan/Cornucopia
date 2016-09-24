@@ -1,7 +1,7 @@
 var request = require('request');
 
 module.exports.profileUser = function(req, res, next) {
-    request.get('http://localhost:3000/api/user/' + req.params.userId, function (err, response) {
+    request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId, function (err, response) {
         if (err) {
             next(err);
         }
@@ -12,7 +12,7 @@ module.exports.profileUser = function(req, res, next) {
 };
 
 module.exports.profileRecipes = function(req, res, next) {
-    request.get('http://chenjonathan-cornucopia.herokuapp.com/user/' + req.params.userId + '/submitted', function(err, response) {
+    request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/submitted', function(err, response) {
         if (err) {
             next(err);
         }
