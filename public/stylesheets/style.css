@@ -128,16 +128,22 @@ body {
 }
 
 .side-buffer {
-    margin-left:15px;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .img-food {
-    max-height: 500px;
-    max-widgth: 500px;
+    max-height: 350px;
+    max-widgth: 350px;
 
 }
 
+div.panel:hover {
+    -moz-box-shadow: 0 0 7px rgba(0,0,0,.6);
+    -webkit-box-shadow: 0 0 7px rgba(0,0,0,.6);
+    box-shadow: 0 0 7px rgba(0,0,0,.6);
+}
+
 .gap-right {
-    margin-right: 10px;
+    margin-right: 5px;
 }
