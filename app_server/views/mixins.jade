@@ -9,12 +9,18 @@ mixin nav(name, id, style)
                 span.icon-bar
                 span.icon-bar
             //href = '/' makes clicking on the name go back to the home page.
-            a.navbar-brand(href="/")
+            //a.navbar-brand(href="/")
                 img(src='http://www.clipartkid.com/images/93/cornucopia-clip-art-borders-clipart-panda-free-clipart-images-ylkB7x-clipart.png', alt='Cornucopia')
-
+            a.navbar-brand(href='#', id="name") Cornucopia
         .collapse.navbar-collapse( id=id )
-            ul.nav.navbar-nav
-                block
+            block
+
+mixin nav_left()
+    ul.nav.navbar-nav
+        block
+mixin nav_right()
+    ul.nav.navbar-nav.navbar-right
+        block
 
 mixin nav_item(href, active)
     li(class=active): a( href=href )

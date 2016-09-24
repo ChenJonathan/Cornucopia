@@ -1,5 +1,16 @@
 extends ../layout
+//- /users/:userId/groceries'
 
 block content
+  .sm-12
+  +nav("Cornucopia", "navmenu")
+    +nav_left()
+      +nav_item("/users/TEST/recipes") Your Recipes
+      +nav_item("/users/TEST/groceries", "active") Grocery List
+      +nav_item("/feed") Find New Recipes
+    +nav_right()
+      +nav_item("/")
+        span.glyphicon.glyphicon-log-out
+        |    Logout
   h1= title
-  p Welcome to groceries
+
