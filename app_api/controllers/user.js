@@ -3,6 +3,20 @@ var mongoose = require('mongoose');
 var User = require('../models/user');
 
 module.exports.postUser = function(req, res) {
+  var user = new User({
+    user: req.body.user,
+    password: req.body.password,
+    points: req.body.points,
+    recipesSubmitted: req.body.recipesSubmitted,
+    recipesSaved: req.body.recipesSaved,
+    recipesHighlighted: req.body.recipesHighlighted
+  });
+  user.save(function(err) {
+    if(err) {
+      return next(err);
+    }
+    res.json(201);
+  });
 };
 
 module.exports.getUserById = function(req, res) {
@@ -12,17 +26,20 @@ module.exports.getUserById = function(req, res) {
   });
 };
 
-module.exports.updateUser = function(req, res) {
-
-};
-
 module.exports.getUserSubmittedRecipes = function(req, res) {
   var user = getUserById(req, res);
   res.json(user.recipesSubmitted);
 };
 
 module.exports.postUserSubmittedRecipe = function(req, res) {
-
+  var user = getUserById(req, res);
+  user.recipesSubmitted.push(req.body.recipe);
+  user.save(function(err) {
+    if(err) {
+      return next(err);
+    }
+    res.json(200);
+  });
 };
 
 module.exports.getUserSavedRecipes = function(req, res) {
@@ -31,7 +48,14 @@ module.exports.getUserSavedRecipes = function(req, res) {
 };
 
 module.exports.postUserSavedRecipe = function(req, res) {
-
+  var user = getUserById(req, res);
+  user.recipesSaved.push(req.body.recipe);
+  user.save(function(err) {
+    if(err) {
+      return next(err);
+    }
+    res.json(200);
+  });
 };
 
 module.exports.getUserHighlightedRecipes = function(req, res) {
@@ -40,5 +64,12 @@ module.exports.getUserHighlightedRecipes = function(req, res) {
 };
 
 module.exports.postUserHighlightedRecipe = function(req, res) {
-
+  var user = getUserById(req, res);
+  user.recipesHighlighted.push(req.body.recipe);
+  user.save(function(err) {
+    if(err) {
+      return next(err);
+    }
+    res.json(200);
+  });
 };
