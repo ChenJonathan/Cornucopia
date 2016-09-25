@@ -37,16 +37,16 @@ module.exports.profileRecipes = function(req, res, next) {
 
 /*var globalData;
 
-//get data from ajax call and store it in a global variable
+get data from ajax call and store it in a global variable
 function ajax1() {
-    var tmp = null;
+    var tmp;
     $.ajax({
         async: false,
         type: "GET",
-        url: 'http://chenjonathan-cornucopia.herokuapp.com/api/user/',
+        url: 'http://chenjonathan-cornucopia.herokuapp.com/api/recipe/' + highlighted[i]['_id'] + '/ingredients',
         data: {appName: $.query.get("appName")},
-        success: function (data) {
-            globalData = data;
+        success: function (error, component) {
+            globalData = component;
             tmp = data;
         }
     });
@@ -54,18 +54,31 @@ function ajax1() {
     return tmp;
 }*/
 
+
 module.exports.profileGroceries = function(req, res, next) {
     request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/highlighted', function(err, highlightedRecipes) {
         if (err) {
             next(err);
         }
-        //$.when(ajax1()).done(function () {
-            request.get('http://chenjonathan-cornucopia.herokuapp.com/api/recipe/:recipeId/ingredients' + req.params.recipeId + '/ingredients', function(error, components) {
-                res.render('profile/groceries', {
-                    selected : JSON.parse(highlightedRecipes.body),
-                    ingredients : JSON.parse(components.body)
+        var ingredientsArr = [];
+        var highlighted = JSON.parse(highlightedRecipes.body);
+        for (var i = 0; i < highlighted.length; i++) {
+            groceryList = function() {
+                var component;
+                component = request.get('http://chenjonathan-cornucopia.herokuapp.com/api/recipe/' + highlighted[i]['_id'] + '/ingredients')
+            }
+            try {
+                groceryList().then(function() {
+                    ingredientsArr.push(component);
+            }, function(error) {
+                console.log("promise broken");
             });
+            } catch (e) {
+                console.log("js is such shit");
+            }
+        }
+        res.render('profile/groceries', {
+            ingredients: ingredientsArr
         });
     });
-
 };
