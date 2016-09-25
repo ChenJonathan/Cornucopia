@@ -43,11 +43,11 @@ module.exports.profileGroceries = function(req, res, next) {
         $.when(ajax1()).done(function () {
             request.get('http://chenjonathan-cornucopia.herokuapp.com/api/recipe/:recipeId/ingredients' + req.params.recipeId + '/ingredients', function(error, components) {
 
-            }
-        }
-    }
+            });
+        });
+    });
     res.render('profile/groceries', {
-        selected : JSON.parse(savedRecipes.body)
+        selected : JSON.parse(savedRecipes.body),
         ingredients : JSON.parse(components.body)
     });
 };
