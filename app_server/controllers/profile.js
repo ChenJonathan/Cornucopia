@@ -26,10 +26,10 @@ module.exports.profileRecipes = function(req, res, next) {
         }
         var object = JSON.parse(response.body);
         request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/saved', function(error, recipesSaved) {
-            console.log(recipesSaved.body);
+            console.log(JSON.parse(recipesSaved.body));
             res.render('profile/recipes', {
                 user: object.user,
-                recipesSaved: recipesSaved.body
+                recipesSaved: JSON.parse(recipesSaved.body)
             });
         });
     });
