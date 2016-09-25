@@ -3,23 +3,26 @@ extends ../layout
 block content
   +nav("Cornucopia", "navmenu")
     +nav_left()
-      +nav_item("/users/TEST/recipes") Your Recipes
-      +nav_item("/users/TEST/groceries") Grocery List
+      +nav_item("/users/57e6fa39dcba0f377cf97047/recipes") Your Recipes
+      +nav_item("/users/57e6fa39dcba0f377cf97047/groceries") Grocery List
       +nav_item("/feed", "active") Find New Recipes
     +nav_right()
       +nav_item("/")
         span.glyphicon.glyphicon-log-out
         |    Logout
+
   - for (var i = 0; i < recipes.length; i++) {
-    .col-lg-4.col-md-4.col-sm-6.col-xs-12
+    .col-lg-4.col-md-4.col-sm-12.col-xs-12
         .panel.panel-default
             .panel-body
                img.img-responsive.img-food.center-block(src='https://i.ytimg.com/vi/x--TCFQlwOc/maxresdefault.jpg')
-               h4= recipes[i]['name']
-               -for (var j = 0; j < recipes[i]['instructions'].length; j++) {
-                    p= recipes[i]['instructions']
+               h4.bottom-left.left_pad= recipes[i]['name']
+               - var ingredients = ""
+               -for (var j = 0; j < recipes[i]['ingredients'].length; j++) {
+                    - var ingredients = (ingredients + ',' + recipes[i]['ingredients'][j])
                -}
-  - }
+            //p.bolder= ingredients
+    - }
   // Trigger the modal with a button
   button.btn.btn-default.btn-lg(type='button', data-toggle='modal', data-target='#myModal') Open Modal
   // Modal

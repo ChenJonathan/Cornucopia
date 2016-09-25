@@ -7,9 +7,10 @@ block content
             h1(align='center') Cornucopia
             .form
                 form.login-form
-                    input(type='text', placeholder='username')
-                    input(type='password', placeholder='password')
-                    a.btn.btn-default(id = 'login' href='/users/KevinTian/recipes') Login
+                    input(type='text', placeholder='username', id='user')
+                    input(type='password', placeholder='password', id='pass')
+                    a.btn.btn-default(id = 'login') Login
+
                     //button(onclick="window.location.href='/users/KevinTian/recipes'") login
                     p.message
                         | Not registered?
