@@ -6,7 +6,13 @@ module.exports.profileUser = function(req, res, next) {
             next(err);
         }
         res.render('profile/profile', {
-            title: 'Test id'  + req.params.userId
+            user: response.body,
+            password: response.body.password,
+            points: response.body.points,
+            recipesSubmitted: response.body.recipesSubmitted,
+            recipesSaved: response.body.recipesSaved,
+            recipesHighlighted: response.body.recipesHighlighted
+            //title: 'Test id'  + req.params.userId
         });
     });
 };
