@@ -22,7 +22,7 @@ module.exports.postUser = function(req, res) {
 var getUserById = module.exports.getUserById = function(req, res) {
   User.find({_id: req.params.userId}, function(err, user) {
     res.status(200);
-    res.json(user);
+    res.json(user[0]);
   });
 };
 
@@ -49,6 +49,7 @@ module.exports.postUserSubmittedRecipe = function(req, res) {
 
 module.exports.getUserSavedRecipes = function(req, res) {
   var user = getUserById(req, res);
+  console.log(user.recipesSaved);
   res.json(user.recipesSaved);
 };
 

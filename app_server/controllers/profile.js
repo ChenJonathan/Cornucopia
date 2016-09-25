@@ -6,14 +6,17 @@ module.exports.profileUser = function(req, res, next) {
             next(err);
         }
         var object = JSON.parse(response.body);
-        request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/submitted', function (err, recipes) {
+        request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/submitted', function (err, recipesSubmitted) {
             if (err) {
                 next(err);
             }
-            res.render('profile/profile', {
-                user: object.user,
-                points: object.points,
-                recipes: JSON.parse(recipes.body)
+            request.get('http:/chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/saved', function(error, recipesSaved)) {
+                res.render('profile/profile', {
+                    user: object.user,
+                    points: object.points,
+                    recipesSubmitted: JSON.parse(recipesSubmitted.body),
+                    recipesSaved: JSON.parse(recipesSaved.body)
+                });
             });
         });
     });
@@ -24,9 +27,12 @@ module.exports.profileRecipes = function(req, res, next) {
         if (err) {
             next(err);
         }
-        res.render('profile/recipes', {
-            submittedRecipes: response
-        });
+            request.get('http:/chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/saved', function(error, recipesSaved)) {
+                res.render('profile/recipes', {
+                    user: object.user,
+                    recipesSaved: JSON.parse(recipesSaved.body)
+                });
+            });
     });
 };
 
