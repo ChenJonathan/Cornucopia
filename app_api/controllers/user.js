@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+var Recipe = require('../models/recipe');
 var User = require('../models/user');
 
 module.exports.postUser = function(req, res) {
@@ -19,20 +20,25 @@ module.exports.postUser = function(req, res) {
   });
 };
 
-var getUserById = module.exports.getUserById = function(req, res) {
+module.exports.getUserById = function(req, res) {
   User.find({_id: req.params.userId}, function(err, user) {
     res.status(200);
     res.json(user[0]);
   });
 };
 
-module.exports.getUserSubmittedRecipes = function(req, res) {
-  var user = getUserById(req, res);
-  var ids = user.recipesSubmitted;
-  ids = ids.map(function(id) { return ObjectId(id); });
-  Recipe.find({_id: {$in: ids}}).exec(function(err, recipes) {
+module.exports.getUserSubmittedRecipes = function(req, res, next) {
+  User.find({_id: req.params.userId}, function(err, user) {
+    if (err) {
+      next(err);
+    }
+    var ids = user[0].recipesSubmitted;
+    ids = ids.map(function(id) { return new mongoose.mongo.ObjectId(id); });
+    console.log('Test' + ids);
+    Recipe.find({_id: {$in: ids}}).exec(function(err, recipes) {
       res.status(200);
       res.json(recipes);
+    });
   });
 };
 
