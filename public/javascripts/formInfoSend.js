@@ -39,16 +39,19 @@ $(function() {
             values[this.name] = $(this).val();
         });
         console.log(values);
+        console.log(values.username);
+        console.log(values.password);
+
         $.ajax({
             type: 'POST',
-            url: 'http://chenjonathan-cornucopia.herokuapp.com/api/users',
+            url: 'http://chenjonathan-cornucopia.herokuapp.com/api/user',
             data: {
-                user: values.user,
-                password: values.pass,
-                points: 0,
-                recipesSubmitted: 0,
-                recipesSaved: 0,
-                recipesHighlighted: 0
+                user: values.username,
+                password: values.password,
+                points: "0",
+                recipesSubmitted: "0",
+                recipesSaved: "0",
+                recipesHighlighted: "0",
             },
         });
 
