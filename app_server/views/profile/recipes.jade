@@ -57,4 +57,12 @@ block content
           h4 6
           | asdasdasd"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ali
 
-          h4= submittedRecipes
+    -for (var i = recipesSaved.length - 1; i >= recipesSaved.length - 6; i--) {
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12
+          .panel.panel-default
+            .panel-body
+              img.img-responsive.img-food.center-block(src='https://i.ytimg.com/vi/x--TCFQlwOc/maxresdefault.jpg')
+              h4= recipesSaved[i]['name']
+              p= recipesSaved[i]['ingredients']
+
+    -}
