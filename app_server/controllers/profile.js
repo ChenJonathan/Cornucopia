@@ -25,7 +25,7 @@ module.exports.profileRecipes = function(req, res, next) {
             next(err);
         }
         res.render('profile/recipes', {
-            title: 'Test id' + req.params.userId
+            submittedRecipes: response
         });
     });
 };

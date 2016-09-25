@@ -10,6 +10,47 @@ block content
       +nav_item("/")
         span.glyphicon.glyphicon-log-out
         |    Logout
+  - for (var i = 0; i < recipes.length; i++) {
+    .col-lg-4.col-md-4.col-sm-6.col-xs-12
+        .panel.panel-default
+            .panel-body
+               img.img-responsive.img-food.center-block(src='https://i.ytimg.com/vi/x--TCFQlwOc/maxresdefault.jpg')
+               h4= recipes[i]['name']
+               -for (var j = 0; j < recipes[i]['instructions'].length; j++) {
+                    p= recipes[i]['instructions']
+               -}
+  - }
+  // Trigger the modal with a button
+  button.btn.btn-default.btn-lg(type='button', data-toggle='modal', data-target='#myModal') Open Modal
+  // Modal
+  #myModal.modal.fade(role='dialog', data-keyboard="false", data-backdrop="static")
+    .modal-dialog
+      // Modal content
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal') ×
+          h4.modal-title Recipe Submission
+        .modal-body
 
-  h1= title
+          form(id = "recipeForm")
+            .form-group
+              label(for='exampleInputName') Recipe Name
+              input#exampleInputName.form-control(name = 'recipeName', type='text', aria-describedby='recipeName', placeholder='i.e. Steak and Potatoes')
+            .form-group
+              label(for='authorName') Author Name
+              input#authorName.form-control(name = 'authorName', type='text', aria-describedby='authorName', placeholder='i.e. Aunt Sally')
+            .form-group
+              label(for='ingredients') Ingredients
+              textarea#ingredients.form-control(name = 'ingredients', rows='3', placeholder= 'i.e. A teaspoon of salt')
+            .form-group
+                label(for='instructions') Instructions
+                textarea#instructions.form-control(name = 'instructions', rows='3', placeholder= 'i.e. Mix well and bake at 325 degrees')
+            .form-group
+              label(for='foodInputFile') Upload a picture of the finished product!
+              input#foodInputFile.form-control-file(name = 'foodPicture', type='file', aria-describedby='fileHelp')
+              small#fileHelp.form-text.text-muted
+
+            button.btn.btn-primary.btn-lg.submit(id = "formButton", type='submit') Submit
+
+          .modal-footer
 
