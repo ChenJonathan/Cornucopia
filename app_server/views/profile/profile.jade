@@ -3,12 +3,13 @@ extends ../layout
 block content
     h1 Welcome to #{user}'s profile page!
     p My dick is #{points} inches long.
+    p= ingredients
 
-    h4 Submitted recipes
-    - for (var i = 0; i < recipesSubmitted.length; i++) {
-        .col-lg-4.col-md-4.col-sm-6.col-xs-12
-            .panel.panel-default
-                .panel-body
-                    a(href='/recipes/'+recipesSubmitted[i]['_id'])
-                        h4= recipesSubmitted[i]['name']
-    - }
+    // h4 Submitted recipes
+    //- for (var i = 0; i < recipesSubmitted.length; i++) {
+    //  .col-lg-4.col-md-4.col-sm-6.col-xs-12
+    //      .panel.panel-default
+    //          .panel-body
+    //              a(href='/recipes/'+recipesSubmitted[i]['_id'])
+    //                  h4= recipesSubmitted[i]['name']
+    //- }
