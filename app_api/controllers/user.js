@@ -14,10 +14,10 @@ module.exports.postUser = function(req, res) {
   var user = new User({
     user: req.body.user,
     password: req.body.password,
-    points: req.body.points,
-    recipesSubmitted: req.body.recipesSubmitted,
-    recipesSaved: req.body.recipesSaved,
-    recipesHighlighted: req.body.recipesHighlighted
+    points: 0,
+    recipesSubmitted: 0,
+    recipesSaved: 0,
+    recipesHighlighted: 0
   });
   user.save(function(err) {
     if(err) {

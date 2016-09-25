@@ -48,10 +48,6 @@ $(function() {
             data: {
                 user: values.username,
                 password: values.password,
-                points: "0",
-                recipesSubmitted: "0",
-                recipesSaved: "0",
-                recipesHighlighted: "0",
             },
         });
 
