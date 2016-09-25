@@ -3,6 +3,13 @@ var mongoose = require('mongoose');
 var Recipe = require('../models/recipe');
 var User = require('../models/user');
 
+module.exports.getUsers = function(req, res) {
+  User.find({}, function(err, user) {
+    res.status(200);
+    res.json(user);
+  });
+};
+
 module.exports.postUser = function(req, res) {
   var user = new User({
     user: req.body.user,
