@@ -9,5 +9,6 @@ block content
         .col-lg-4.col-md-4.col-sm-6.col-xs-12
             .panel.panel-default
                 .panel-body
-                    p= recipesSubmitted[i]['name']
+                    a(href='/recipes/'+recipesSubmitted[i]['_id'])
+                        h4= recipesSubmitted[i]['name']
     - }
