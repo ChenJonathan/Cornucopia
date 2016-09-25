@@ -23,7 +23,7 @@ block content
           h4.modal-title Recipe Submission
         .modal-body
 
-          form(method = 'post')
+          form(id = "pleaseWork")
             .form-group
               label(for='exampleInputName') Recipe Name
               input#exampleInputName.form-control(name = 'recipeName', type='text', aria-describedby='recipeName', placeholder='i.e. Steak and Potatoes')
@@ -41,6 +41,7 @@ block content
               input#foodInputFile.form-control-file(name = 'foodPicture', type='file', aria-describedby='fileHelp')
               small#fileHelp.form-text.text-muted
 
-            button.btn.btn-primary.btn-lg.submit(type='submit') Submit
+            button.btn.btn-primary.btn-lg.submit(id = "formButton", type='submit', data-dismiss="modal") Submit
 
-        .modal-footer
+          .modal-footer
+
