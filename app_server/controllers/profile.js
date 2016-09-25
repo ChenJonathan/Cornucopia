@@ -30,6 +30,7 @@ module.exports.profileRecipes = function(req, res, next) {
     });
 };
 
+//
 module.exports.profileGroceries = function(req, res, next) {
     res.render('profile/groceries', {
         title: 'Test id' + req.params.userId

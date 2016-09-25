@@ -23,10 +23,8 @@ $(function() {
                 rating: 0,
                 ingredients: values.ingredients,
             },
-            success:function() {
-                $('#myModal').modal('hide');
-            }
         });
+        $('#myModal').modal('hide');
         return false;
     });
 })
