@@ -5,7 +5,8 @@ module.exports.recipeInfo = function(req, res, next) {
         if (err) {
             next(err);
         }
-        var recipe = response['body'];
+        var recipe = JSON.parse(response['body']);
+        console.log(recipe);
         res.render('recipes/info', {
             name: recipe.name,
             author: recipe.author,
@@ -13,12 +14,5 @@ module.exports.recipeInfo = function(req, res, next) {
             rating: recipe.rating,
             ingredients: recipe.ingredients
         });
-    });
-};
-
-
-module.exports.recipeCreate = function(req, res) {
-    res.render('recipes/create', {
-        title: "Create New Recipe"
     });
 };

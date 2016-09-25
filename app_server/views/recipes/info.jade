@@ -1,5 +1,14 @@
 extends ../layout
 
 block content
-  h1= title
-  p Welcome to recipes info
+    h1= name
+    h3 By #{author}
+    h3 #{rating} / 5
+    br
+    - for (var i = 0; i < ingredients.length; i++) {
+        h4= ingredients[i]
+    - }
+    br
+    - for (var i = 0; i < instructions.length; i++) {
+        h5= instructions[i]
+    - }
