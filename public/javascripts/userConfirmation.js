@@ -13,11 +13,7 @@ $(function () {
                             console.log(data[i].password);
                             var newURL = 'http://chenjonathan-cornucopia.herokuapp.com/users/' + data[i]._id + '/recipes';
                             document.location.href = newURL;
-                        } else {
-                            window.alert("Wrong Username/Password Combination!");
                         }
-                    } else {
-                        window.alert("Wrong Username/Password Combination!");
                     }
                 }
             }
