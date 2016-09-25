@@ -34,7 +34,6 @@ module.exports.getUserSubmittedRecipes = function(req, res, next) {
     }
     var ids = user[0].recipesSubmitted;
     ids = ids.map(function(id) { return new mongoose.mongo.ObjectId(id); });
-    console.log('Test' + ids);
     Recipe.find({_id: {$in: ids}}).exec(function(err, recipes) {
       res.status(200);
       res.json(recipes);
@@ -54,9 +53,17 @@ module.exports.postUserSubmittedRecipe = function(req, res) {
 };
 
 module.exports.getUserSavedRecipes = function(req, res) {
-  var user = getUserById(req, res);
-  console.log(user.recipesSaved);
-  res.json(user.recipesSaved);
+    User.find({_id: req.params.userId}, function(err, user) {
+      if (err) {
+        next(err);
+      }
+      var ids = user[0].recipesSaved;
+      ids = ids.map(function(id) { return new mongoose.mongo.ObjectId(id); });
+      Recipe.find({_id: {$in: ids}}).exec(function(err, recipes) {
+        res.status(200);
+        res.json(recipes);
+      });
+    });
 };
 
 module.exports.postUserSavedRecipe = function(req, res) {
@@ -71,8 +78,17 @@ module.exports.postUserSavedRecipe = function(req, res) {
 };
 
 module.exports.getUserHighlightedRecipes = function(req, res) {
-  var user = getUserById(req, res);
-  res.json(user.recipesHighlighted);
+    User.find({_id: req.params.userId}, function(err, user) {
+      if (err) {
+        next(err);
+      }
+      var ids = user[0].recipesHighlighted;
+      ids = ids.map(function(id) { return new mongoose.mongo.ObjectId(id); });
+      Recipe.find({_id: {$in: ids}}).exec(function(err, recipes) {
+        res.status(200);
+        res.json(recipes);
+      });
+    });
 };
 
 module.exports.postUserHighlightedRecipe = function(req, res) {
