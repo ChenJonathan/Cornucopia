@@ -11,8 +11,9 @@ router.get('/recipe/:recipeId', controlRecipes.getRecipeById);
 router.get('/recipe/:recipeId/ingredients', controlRecipes.getIngredientsByRecipeId);
 
 /* User pages */
-router.get('/user/:userId', controlUsers.getUserById);
+router.get('/user', controlUsers.getUsers);
 router.post('/user', controlUsers.postUser);
+router.get('/user/:userId', controlUsers.getUserById);
 router.get('/user/:userId/submitted', controlUsers.getUserSubmittedRecipes);
 router.post('/user/:userId/submitted', controlUsers.postUserSubmittedRecipe);
 router.get('/user/:userId/saved', controlUsers.getUserSavedRecipes);
