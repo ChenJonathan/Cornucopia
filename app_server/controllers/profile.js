@@ -36,7 +36,18 @@ module.exports.profileRecipes = function(req, res, next) {
 };
 
 module.exports.profileGroceries = function(req, res, next) {
+    request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/highlighted', function(err, highlightedRecipes) {
+        if (err) {
+            next(err);
+        }
+        $.when(ajax1()).done(function () {
+            request.get('http://chenjonathan-cornucopia.herokuapp.com/api/recipe/:recipeId/ingredients' + req.params.recipeId + '/ingredients', function(error, components) {
+
+            });
+        });
+    });
     res.render('profile/groceries', {
-        title: 'Test id' + req.params.userId
+        selected : JSON.parse(savedRecipes.body),
+        ingredients : JSON.parse(components.body)
     });
 };
