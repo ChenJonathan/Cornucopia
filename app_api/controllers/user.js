@@ -28,7 +28,12 @@ module.exports.getUserById = function(req, res) {
 
 module.exports.getUserSubmittedRecipes = function(req, res) {
   var user = getUserById(req, res);
-  res.json(user.recipesSubmitted);
+  var ids = user.recipesSubmitted;
+  ids = ids.map(function(id) { return ObjectId(id); });
+  Recipe.find({_id: {$in: ids}}).exec(function(err, recipes) {
+      res.status(200);
+      res.json(recipes);
+  });
 };
 
 module.exports.postUserSubmittedRecipe = function(req, res) {

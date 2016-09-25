@@ -1,5 +1,15 @@
 extends ../layout
 
 block content
-  h1= title
-  p Welcome to profile
+    h1 Welcome to #{user}'s profile page!
+    p My dick is #{points} inches long.
+    p Recipes: #{recipes.length}
+    - for (var i = 0; i < recipes.length; i++) {
+        .col-lg-4.col-md-4.col-sm-6.col-xs-12
+            .panel.panel-default
+                .panel-body
+                    h4= recipes[i]['name']
+                    -for (var j = 0; j < recipes[i]['instructions'].length; j++) {
+                        p= recipes[i]['instructions'][j]
+                    -}
+    - }

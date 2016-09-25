@@ -5,8 +5,16 @@ module.exports.profileUser = function(req, res, next) {
         if (err) {
             next(err);
         }
-        res.render('profile/profile', {
-            title: 'Test id'  + req.params.userId
+        var object = JSON.parse(response.body);
+        request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/submitted', function (err, recipes) {
+            if (err) {
+                next(err);
+            }
+            res.render('profile/profile', {
+                user: object.user,
+                points: object.points,
+                recipes: JSON.parse(recipes.body)
+            });
         });
     });
 };
