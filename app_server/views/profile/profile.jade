@@ -1,6 +1,7 @@
 extends ../layout
 
 block content
+<<<<<<< HEAD
   h1= title
   p Welcome to profile
   p= user
@@ -9,3 +10,17 @@ block content
   p= recipesSubmitted
   p= recipesSaved
   p= recipesHighlighted
+=======
+    h1 Welcome to #{user}'s profile page!
+    p My dick is #{points} inches long.
+    p Recipes: #{recipes.length}
+    - for (var i = 0; i < recipes.length; i++) {
+        .col-lg-4.col-md-4.col-sm-6.col-xs-12
+            .panel.panel-default
+                .panel-body
+                    h4= recipes[i]['name']
+                    -for (var j = 0; j < recipes[i]['instructions'].length; j++) {
+                        p= recipes[i]['instructions'][j]
+                    -}
+    - }
+>>>>>>> 548cdc1b96a37585b39ee0fef4a95b5dc454fec1

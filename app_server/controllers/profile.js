@@ -5,6 +5,7 @@ module.exports.profileUser = function(req, res, next) {
         if (err) {
             next(err);
         }
+<<<<<<< HEAD
         res.render('profile/profile', {
             user: response.body,
             password: response.body.password,
@@ -13,6 +14,18 @@ module.exports.profileUser = function(req, res, next) {
             recipesSaved: response.body.recipesSaved,
             recipesHighlighted: response.body.recipesHighlighted
             //title: 'Test id'  + req.params.userId
+=======
+        var object = JSON.parse(response.body);
+        request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/submitted', function (err, recipes) {
+            if (err) {
+                next(err);
+            }
+            res.render('profile/profile', {
+                user: object.user,
+                points: object.points,
+                recipes: JSON.parse(recipes.body)
+            });
+>>>>>>> 548cdc1b96a37585b39ee0fef4a95b5dc454fec1
         });
     });
 };
@@ -23,7 +36,7 @@ module.exports.profileRecipes = function(req, res, next) {
             next(err);
         }
         res.render('profile/recipes', {
-            title: 'Test id' + req.params.userId
+            submittedRecipes: response
         });
     });
 };
