@@ -61,6 +61,10 @@ module.exports.profileGroceries = function(req, res, next) {
         }
         var ingredientsArr = [];
         var highlighted = JSON.parse(highlightedRecipes.body);
+
+        console.log("here");
+        console.log(ingredientArr);
+
         for (var i = 0; i < highlighted.length; i++) {
             groceryList = function() {
                 var component;
@@ -75,7 +79,6 @@ module.exports.profileGroceries = function(req, res, next) {
                 } catch (e) {
                     console.log("js is such shit");
                 }
-                console.log(ingredientArr);
             }
         }
         res.render('profile/groceries', {
