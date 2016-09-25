@@ -2,11 +2,9 @@
  * Created by kevin on 9/24/2016.
  */
 $(function() {
-    console.log("Hi I work");
-    $('#pleaseWork').submit(function() {
-        console.log("hi");
+    $('#recipeForm').submit(function() {
             // get all the inputs into an array.
-            var $inputs = $('#pleaseWork :input');
+            var $inputs = $('#recipeForm :input');
 
             // not sure if you wanted this, but I thought I'd add it.
             // get an associative array of just the values.
@@ -25,6 +23,9 @@ $(function() {
                 rating: 0,
                 ingredients: values.ingredients,
             },
+            success:function() {
+                $('#myModal').modal('hide');
+            }
         });
         return false;
     });
