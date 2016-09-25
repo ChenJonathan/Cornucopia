@@ -19,7 +19,7 @@ module.exports.postUser = function(req, res) {
   });
 };
 
-module.exports.getUserById = function(req, res) {
+var getUserById = module.exports.getUserById = function(req, res) {
   User.find({_id: req.params.userId}, function(err, user) {
     res.status(200);
     res.json(user);
