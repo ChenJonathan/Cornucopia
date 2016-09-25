@@ -34,6 +34,8 @@ module.exports.postNewRecipe = function(req, res) {
 };
 
 module.exports.getIngredientsByRecipeId = function(req, res) {
-  var recipe = getRecipeById(req, res);
-  res.json(recipe.ingredients);
+  Recipe.find({_id: req.params.recipeId}).exec(function(err, recipe) {
+    res.status(200);
+    res.json(recipe.ingredients);
+  });
 };
