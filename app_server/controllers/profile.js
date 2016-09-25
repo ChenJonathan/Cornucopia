@@ -54,7 +54,6 @@ function ajax1() {
     return tmp;
 }*/
 
-
 module.exports.profileGroceries = function(req, res, next) {
     request.get('http://chenjonathan-cornucopia.herokuapp.com/api/user/' + req.params.userId + '/highlighted', function(err, highlightedRecipes) {
         if (err) {
@@ -66,15 +65,17 @@ module.exports.profileGroceries = function(req, res, next) {
             groceryList = function() {
                 var component;
                 component = request.get('http://chenjonathan-cornucopia.herokuapp.com/api/recipe/' + highlighted[i]['_id'] + '/ingredients')
-            }
-            try {
-                groceryList().then(function() {
-                    ingredientsArr.push(component);
-            }, function(error) {
-                console.log("promise broken");
-            });
-            } catch (e) {
-                console.log("js is such shit");
+                try {
+                    var groceryPromise = groceryList();
+                    groceryPromise.then(function() {
+                        ingredientsArr.push(component);
+                }, function(error) {
+                    console.log("promise broken");
+                });
+                } catch (e) {
+                    console.log("js is such shit");
+                }
+                console.log(ingredientArr);
             }
         }
         res.render('profile/groceries', {
