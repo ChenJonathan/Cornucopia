@@ -15,13 +15,13 @@ block content
     .col-lg-4.col-md-4.col-sm-12.col-xs-12
         .panel.panel-default
             .panel-body
-               img.img-responsive.img-food.center-block(src='https://i.ytimg.com/vi/x--TCFQlwOc/maxresdefault.jpg')
-               h4.bottom-left.left_pad= recipes[i]['name']
-               - var ingredients = ""
-               -for (var j = 0; j < recipes[i]['ingredients'].length; j++) {
-                    - var ingredients = (ingredients + ',' + recipes[i]['ingredients'][j])
-               -}
-            //p.bolder= ingredients
+              a(href='/recipes/'+recipes[i]['_id'])
+                img.img-responsive.img-food.center-block(src='https://i.ytimg.com/vi/x--TCFQlwOc/maxresdefault.jpg')
+                h4.bottom-left.left_pad= recipes[i]['name']
+                - var ingredients = ""
+                -for (var j = 0; j < recipes[i]['ingredients'].length; j++) {
+                  - var ingredients = (ingredients + ',' + recipes[i]['ingredients'][j])
+                -}
     - }
   // Trigger the modal with a button
   button.btn.btn-default.btn-lg(type='button', data-toggle='modal', data-target='#myModal') Open Modal
